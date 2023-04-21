@@ -13,16 +13,15 @@
 */
 package com.bt.webtemplate.dao;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.lang.Nullable;
 
 import com.bt.webtemplate.vo.UserInfoVO;
 
 public interface UserRepository extends CrudRepository<UserInfoVO, Long> {
-    List<UserInfoVO> getById(long id);
+    @Nullable
+    UserInfoVO getById(long id);
 
-    void deleteByAccount(String account);
-
-    List<UserInfoVO> getByAccount(String account);
+    @Nullable
+    UserInfoVO getByAccount(String account);
 }

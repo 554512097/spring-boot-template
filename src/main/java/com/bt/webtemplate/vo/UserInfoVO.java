@@ -13,10 +13,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Entity
 @Data
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 @Table(name = "users")
 public class UserInfoVO {
 
@@ -24,7 +27,7 @@ public class UserInfoVO {
     @GeneratedValue
     private long id;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String phone;
 
     @NotBlank
